@@ -10,11 +10,13 @@
 
 ### Game description
 
-Fruit smash is an arcade game where the player click fruits to earn points and not click  bombs to avoid losing lives. Player will stsrt with 3 lives and he has 30 challenging rounds. the goal is to survive as long as possible and win all rounds.
+Fruit Smash is an arcade game where players click fruits to earn points while avoiding bombs to prevent losing lives. Players start with 3 lives and must complete 30 challenging rounds. In each round, fruits and bombs are visible for 5 seconds before flipping over. The goal is to survive and successfully complete all 30 rounds.
 
 #### Sprint 1
 
-Goal: Build a basic game design and functionality, allowing the player to start the game, click fruits to earn points, and see their score.
+Goal: Build the basic game layout and functionality, allowing the player to start the game, view fruits and bombs, click fruits to earn points, and see their score updated.
 
 Start: 16 November 2026
 End: 24 November 2026
+
+#### Credits
