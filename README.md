@@ -14,7 +14,7 @@ Fruit smash is an arcade game where the player click fruits to earn points and n
 
 #### Sprint 1
 
-Goal: [Describe the result you want.]
+Goal: Build a basic game design and functionality, allowing the player to start the game, click fruits to earn points, and see their score.
 
-Start: [Date]
-End: [Date]
+Start: 16 November 2026
+End: 24 November 2026
