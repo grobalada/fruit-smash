@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Smash</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1>Fruit Smash</h1>
+    <section id="instructions">
+        <h2>How to play?</h2>
+        <p>Remember the fruits and bombs position for 5 seconds </p>
+        <p>Click the hidden fruits to earn points</p>
+        <p>Avoid the bombs or you will lose life</p>
+        <p>Complete 30 rounds to win</p>
+    </section>
+    <section>
+        <p id="round">1/30</p>
+        <p id="score">0</p>
+        <p id="lives">3</p>
+        <p id="timer">0s</p>
+    </section>
+    <button id="start">Start game</button>
+    <section id="board">
+        <div class="board">🍑</div>
+        <div class="board">🍎</div>
+        <div class="board">💣</div>
+        <div class="board">🥝</div>
+        <div class="board">💣</div>
+        <div class="board">🍋</div>
+        <div class="board">🍉</div>
+        <div class="board">💣</div>
+        <div class="board">🍍</div>
+    </section>
+    <p id="message">Click Start Game to play!</p>
+    <button id="reset">Restart Game</button>
+</html>
