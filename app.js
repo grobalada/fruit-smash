@@ -23,20 +23,31 @@ cardEls.forEach((card) => {
     cards.push(card.textContent)
 })
 
-// FUNCTION
+// FUNCTIONS
 function shuffle(cards) {
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
-  }
-  return cards;
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+
+        const temp = cards[i]
+        cards[i] = cards[j]
+        cards[j] = temp
+    }
+
+    return cards
 }
 
 function startRound() {
 
     canClick = false
     fruitsFound = 0
-    timeLeft = 3
+
+    if (round <= 10) {
+        timeLeft = 3
+    } else if (round <= 20) {
+        timeLeft = 2
+    } else {
+        timeLeft = 1
+    }
 
     shuffle(cards)
 
@@ -45,7 +56,7 @@ function startRound() {
         card.classList.remove('clicked')
     })
 
-    roundEl.textContent = round + '/30'
+    roundEl.textContent = `${round}/30`
     timerEl.textContent = `${timeLeft}s`
     messageEl.textContent = 'Remember the fruits and bombs!'
 
@@ -98,6 +109,7 @@ cardEls.forEach((card, index) => {
         card.textContent = cards[index]
         card.classList.add('clicked')
 
+        // BOMB
         if (cards[index] === '💣') {
 
             lives--
@@ -112,13 +124,14 @@ cardEls.forEach((card, index) => {
 
                 messageEl.textContent = 'You lost one life!'
             }
+
         } else {
+
             score++
             fruitsFound++
 
             scoreEl.textContent = score
             messageEl.textContent = 'Good job! +1 point'
-
 
             if (fruitsFound === 6) {
 
@@ -131,7 +144,6 @@ cardEls.forEach((card, index) => {
                 } else {
 
                     round++
-
                     startRound()
                 }
             }
@@ -152,7 +164,7 @@ resetButtonEl.addEventListener('click', () => {
 
     scoreEl.textContent = score
     livesEl.textContent = lives
-    roundEl.textContent = round + '/30'
+    roundEl.textContent = `${round}/30`
     timerEl.textContent = `${timeLeft}s`
 
     startButtonEl.disabled = false
