@@ -33,7 +33,7 @@ Fruit Smash is an arcade game where players click fruits to earn points while av
 
 ## Getting Started
 
-- Deployed Game: [Play Fruit Smash](https://grobalada.github.io/project-1/)
+- Deployed Game: [Play Fruit Smash](https://grobalada.github.io/fruit-smash/)
 - Project Board: [Project Planning](https://github.com/users/grobalada/projects/1)
 
 ## Attributions
