@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Smash</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <h1>Fruit Smash</h1>
+
+    <section id="instructions">
+        <h2>How to Play?</h2>
+
+        <p>Memorize the positions of the fruits and bombs.</p>
+        <p>The cards will be hidden when the timer ends.</p>
+        <p>Click the hidden fruits to earn points.</p>
+        <p>Avoid the bombs or you will lose a life.</p>
+        <p>Complete both rounds to win.</p>
+    </section>
+
+    <section id="game-info">
+        <p>Round: <span id="round">1/2</span></p>
+        <p>Score: <span id="score">0</span></p>
+        <p>Lives: <span id="lives">3</span></p>
+        <p>Timer: <span id="timer">1.5s</span></p>
+    </section>
+
+    <button id="start">Start Game</button>
+
+    <p id="message">Click Start Game to play!</p>
+
+    <section id="board">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </section>
+
+    <button id="reset">Restart Game</button>
+
+</body>
+
+</html>
