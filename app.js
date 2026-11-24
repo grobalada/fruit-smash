@@ -14,21 +14,20 @@ let lives = 3
 let round = 1
 let fruitsFound = 0
 let canClick = false
-let timeLeft = 3
+let timeLeft = 1.5
 let timer
+let nextRoundTimer
 
-const cards = []
-
-cardEls.forEach((card) => {
-    cards.push(card.textContent)
-})
 
 // FUNCTIONS
 function shuffle(cards) {
+
     for (let i = cards.length - 1; i > 0; i--) {
+
         const j = Math.floor(Math.random() * (i + 1))
 
         const temp = cards[i]
+
         cards[i] = cards[j]
         cards[j] = temp
     }
@@ -41,50 +40,51 @@ function startRound() {
     canClick = false
     fruitsFound = 0
 
-    if (round <= 10) {
-        timeLeft = 3
-    } else if (round <= 20) {
-        timeLeft = 2
-    } else {
+    if (round <= 5) {
+
+        timeLeft = 1.5
+
+    } else if (round <= 10) {
+
         timeLeft = 1
+
+    } else {
+
+        timeLeft = 0.5
     }
 
     shuffle(cards)
 
     cardEls.forEach((card, index) => {
+
         card.textContent = cards[index]
         card.classList.remove('clicked')
     })
 
-    roundEl.textContent = `${round}/30`
+    roundEl.textContent = `${round}/15`
     timerEl.textContent = `${timeLeft}s`
     messageEl.textContent = 'Remember the fruits and bombs!'
 
-    timer = setInterval(() => {
+    timer = setTimeout(() => {
 
-        timeLeft--
-        timerEl.textContent = `${timeLeft}s`
+        cardEls.forEach((card) => {
+            card.textContent = '?'
+        })
 
-        if (timeLeft === 0) {
+        timerEl.textContent = '0s'
+        canClick = true
+        messageEl.textContent = 'Find the fruits!'
 
-            clearInterval(timer)
-
-            cardEls.forEach((card) => {
-                card.textContent = '?'
-            })
-
-            canClick = true
-            messageEl.textContent = 'Find the fruits!'
-        }
-
-    }, 1000)
+    }, timeLeft * 1000)
 }
 
+// EVENT LISTENERS
 startButtonEl.addEventListener('click', () => {
 
     score = 0
     lives = 3
     round = 1
+    fruitsFound = 0
 
     scoreEl.textContent = score
     livesEl.textContent = lives
@@ -109,7 +109,7 @@ cardEls.forEach((card, index) => {
         card.textContent = cards[index]
         card.classList.add('clicked')
 
-        // BOMB
+
         if (cards[index] === '💣') {
 
             lives--
@@ -118,7 +118,7 @@ cardEls.forEach((card, index) => {
             if (lives === 0) {
 
                 canClick = false
-                messageEl.textContent = 'Game Over!'
+                messageEl.textContent = `Game Over! Final Score: ${score}`
 
             } else {
 
@@ -133,18 +133,25 @@ cardEls.forEach((card, index) => {
             scoreEl.textContent = score
             messageEl.textContent = 'Good job! +1 point'
 
-            if (fruitsFound === 6) {
+
+            if (fruitsFound === 10) {
 
                 canClick = false
 
-                if (round === 30) {
+                if (round === 15) {
 
-                    messageEl.textContent = 'You Win!'
+                    messageEl.textContent = `You Win! Final Score: ${score}`
 
                 } else {
 
-                    round++
-                    startRound()
+                    messageEl.textContent = `Round ${round} Completed!`
+
+                    nextRoundTimer = setTimeout(() => {
+
+                        round++
+                        startRound()
+
+                    }, 1000)
                 }
             }
         }
@@ -153,25 +160,28 @@ cardEls.forEach((card, index) => {
 
 resetButtonEl.addEventListener('click', () => {
 
-    clearInterval(timer)
+    clearTimeout(timer)
+    clearTimeout(nextRoundTimer)
 
     score = 0
     lives = 3
     round = 1
     fruitsFound = 0
     canClick = false
-    timeLeft = 3
+    timeLeft = 1.5
 
     scoreEl.textContent = score
     livesEl.textContent = lives
-    roundEl.textContent = `${round}/30`
+    roundEl.textContent = `${round}/15`
     timerEl.textContent = `${timeLeft}s`
 
     startButtonEl.disabled = false
+
     messageEl.textContent = 'Click Start Game to play!'
 
-    cardEls.forEach((card, index) => {
-        card.textContent = cards[index]
+    cardEls.forEach((card) => {
+
+        card.textContent = ''
         card.classList.remove('clicked')
     })
 })
